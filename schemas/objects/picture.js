@@ -8,14 +8,8 @@ export default {
       type: "image",
       title: "Image",
       validation: (Rule) => Rule.required(),
-    },
-    {
-      name: "time",
-      type: "datetime",
-      title: "Time",
-      validation: (Rule) => Rule.required(),
       options: {
-        dateFormat: "DD/MM/YYYY",
+        metadata: ["exif", "location", "blurhash", "lqip", "palette"],
       },
     },
     {
