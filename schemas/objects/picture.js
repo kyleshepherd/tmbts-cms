@@ -1,3 +1,5 @@
+import Time from "../../src/Time";
+
 export default {
   name: "picture",
   type: "object",
@@ -11,6 +13,15 @@ export default {
       options: {
         metadata: ["exif", "location", "blurhash", "lqip", "palette"],
       },
+    },
+    {
+      name: "time",
+      type: "string",
+      title: "Time",
+      inputComponent: Time,
+      placeholder: "HH:MM",
+      validation: (Rule) =>
+        Rule.regex(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/gm, "time"),
     },
     {
       name: "caption",
