@@ -10,9 +10,6 @@ export default {
       type: "image",
       title: "Image",
       validation: (Rule) => Rule.required(),
-      options: {
-        metadata: ["exif", "location", "blurhash", "lqip", "palette"],
-      },
     },
     {
       name: "time",
