@@ -4,7 +4,7 @@ import { TextInput } from "@sanity/ui";
 import { useId } from "@reach/auto-id";
 import PatchEvent, { set, unset } from "@sanity/form-builder/PatchEvent";
 
-const MyCustomString = React.forwardRef((props, ref) => {
+const Time = React.forwardRef((props, ref) => {
   const {
     type,
     value,
@@ -18,10 +18,18 @@ const MyCustomString = React.forwardRef((props, ref) => {
 
   const inputId = useId();
 
+  let lastLength;
+
   const handleChange = React.useCallback(
     (event) => {
-      const inputValue = event.currentTarget.value;
-      onChange(PatchEvent.from(inputValue ? set(inputValue) : unset()));
+      let inputValue = event.currentTarget.value;
+      if (inputValue.length === 2 && lastLength < 2) {
+        inputValue += ":";
+      }
+      if (inputValue.length <= 5) {
+        lastLength = inputValue.length;
+        onChange(PatchEvent.from(inputValue ? set(inputValue) : unset()));
+      }
     },
     [onChange]
   );
@@ -48,4 +56,4 @@ const MyCustomString = React.forwardRef((props, ref) => {
   );
 });
 
-export default MyCustomString;
+export default Time;
